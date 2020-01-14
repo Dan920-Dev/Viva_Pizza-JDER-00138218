@@ -134,13 +134,8 @@ cout<<"Pedido Agregado Exitosamente!!"<<endl;
 
 void Add_Charge(int size){
 
-
-
 // Se preguntas cuantos pedidos desea agregar y se empiezan a llenar los campos con los datos ingresados
-int num;
-cout<<"¿Cuantos pedidos a Domicilio desea agregar?"<<endl;
-cin>>num;
-	
+
 struct Charge Charges[size];
 for (int i = 0; i < size; i++){
     cout<<"Digite el nombre de quien realiza el pedido "<<i+1<<": "<<endl;
