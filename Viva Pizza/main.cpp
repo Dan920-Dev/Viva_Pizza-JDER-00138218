@@ -4,16 +4,6 @@
 #include <iostream>
 using namespace std;
 
-
-
-// Funciones a Utilizar
-void Menu();
-void Add_Order(int );
-void Add_Charge(int );
-void Home_delivery(int );
-void Restaurant_Order(int );
-void Total_Sale();
-
 // Estructuras a Utilizar
     struct Order{ // Para pedidos a Domicilio
    	char name[20];
@@ -34,6 +24,17 @@ void Total_Sale();
     int  Quantity;
     char Payment[20];
 };
+
+// Funciones a Utilizar
+void Menu();
+void Add_Order();
+void Add_Charge();
+void Home_delivery();
+void Restaurant_Order();
+void Total_Sale();
+
+
+
 
 int main(){
     // Declarando Variables
@@ -74,22 +75,18 @@ void Menu(){
 
 		cin >> opcion;
 		switch (opcion) {
-		case 1: int num1;
-        cout<<"¿Cuantos pedidos a Domicilio desea agregar?"<<endl;
-        cin>>num1;
-        Add_Order(num1);
+		case 1: 
+        Add_Order();
         cout<<endl;
 			break;
-		case 2: int num2;
-        cout<<"¿Cuantos pedidos a Domicilio desea agregar?"<<endl;
-        cin>>num2; 
-        Add_Charge(num2);
+		case 2: 
+        Add_Charge();
 			break;
 		case 3: 
-        Home_delivery(num1);
+        Home_delivery();
 			break;
 		case 4: 
-        Restaurant_Order(num2);
+        Restaurant_Order();
 			break;
         case 5: Total_Sale();
 			break;
@@ -102,57 +99,55 @@ void Menu(){
 
 }
 
-void Add_Order(int size){
+void Add_Order(){
 
 // Se preguntas cuantos pedidos desea agregar y se empiezan a llenar los campos con los datos ingresados
-struct Order Orders[size];
-for (int i = 0; i < size; i++){
-    cout<<"Digite el nombre de quien realiza el pedido "<<i+1<<": "<<endl;
+struct Order Orders[1];
+for (int i = 0; i < 1; i++){
+    cout<< "Digite el nombre de quien realiza el pedido "<<": "<<endl;
 	cin>>Orders[i].name;
-    cout<<"Digite la direccion del pedido"<<endl;
+    cout<< "Digite la direccion del pedido"<<endl;
     cin>>Orders[i].address;
-    cout<<"Digite el numero de telefono del cliente: "<<endl;
+    cout<< "Digite el numero de telefono del cliente: "<<endl;
     cin>>Orders[i].Telephone;
-    cout<<"Digite el nombre del plato principal que desea: "<<endl;
-    cout<<"1) Pizza"<<endl<<"2) Ensalada"<<endl<<"3) Pasta"<<endl;
+    cout<< "Digite el nombre del plato principal que desea: "<<endl;
+    cout<< "1) Pizza"<<endl<< "2) Ensalada"<<endl<< "3) Pasta"<<endl;
     cin>>Orders[i].Main_Plate;
-    cout<<"Digite el nombre de la entrada que desea: "<<endl;
-    cout<<"1) Palitroques"<<endl<<"2) Alitas"<<endl;
+    cout<< "Digite el nombre de la entrada que desea: "<<endl;
+    cout<< "1) Palitroques"<<endl<< "2) Alitas"<<endl;
     cin>>Orders[i].input;
-     cout<<"Digite el nombre de la bebida que desea: "<<endl;
-    cout<<"1) Gaseosa"<<endl<<"2) Te"<<endl;
+     cout<< "Digite el nombre de la bebida que desea: "<<endl;
+    cout<< "1) Gaseosa"<<endl<< "2) Te"<<endl;
     cin>>Orders[i].Drink;
-    cout<<"Digite el monto a pagar"<<endl;
+    cout<< "Digite el monto a pagar"<<endl;
     cin>>Orders[i].Quantity;
-    cout<<"Digite el tipo de pago"<<endl;
-    cout<<"1) Tarjeta"<<endl<<"2) Efectivo"<<endl;
+    cout<< "Digite el tipo de pago"<<endl;
+    cout<< "1) Tarjeta"<<endl<< "2) Efectivo"<<endl;
     cin>>Orders[i].Payment;
     cout<<endl;
 }
 cout<<"Pedido Agregado Exitosamente!!"<<endl;
 }
 
-void Add_Charge(int size){
+void Add_Charge(){
 
-// Se preguntas cuantos pedidos desea agregar y se empiezan a llenar los campos con los datos ingresados
-
-struct Charge Charges[size];
-for (int i = 0; i < size; i++){
-    cout<<"Digite el nombre de quien realiza el pedido "<<i+1<<": "<<endl;
+struct Charge Charges[1];
+for (int i = 0; i < 1; i++){
+    cout<< "Digite el nombre de quien realiza el pedido "<<i+1<<": "<<endl;
 	cin>>Charges[i].name;
-    cout<<"Digite el nombre del plato principal que desea: "<<endl;
-    cout<<"1) Pizza"<<endl<<"2) Ensalada"<<endl<<"3) Pasta"<<endl;
+    cout<< "Digite el nombre del plato principal que desea: "<<endl;
+    cout<< "1) Pizza"<<endl<< "2) Ensalada"<<endl<< "3) Pasta"<<endl;
     cin>>Charges[i].Main_Plate;
-    cout<<"Digite el nombre de la entrada que desea: "<<endl;
-    cout<<"1) Palitroques"<<endl<<"2) Alitas"<<endl;
+    cout<< "Digite el nombre de la entrada que desea: "<<endl;
+    cout<<" 1) Palitroques"<<endl<< "2) Alitas"<<endl;
     cin>>Charges[i].input;
-     cout<<"Digite el nombre de la bebida que desea: "<<endl;
-    cout<<"1) Gaseosa"<<endl<<"2) Te"<<endl;
+     cout<< "Digite el nombre de la bebida que desea: "<<endl;
+    cout<< "1) Gaseosa"<<endl<< "2) Te"<<endl;
     cin>>Charges[i].Drink;
-    cout<<"Digite el monto a pagar"<<endl;
+    cout<< "Digite el monto a pagar"<<endl;
     cin>>Charges[i].Quantity;
-    cout<<"Digite el tipo de pago"<<endl;
-    cout<<"1) Tarjeta"<<endl<<"2) Efectivo"<<endl;
+    cout<< "Digite el tipo de pago"<<endl;
+    cout<< "1) Tarjeta"<<endl<< "2) Efectivo"<<endl;
     cin>>Charges[i].Payment;
     cout<<endl;
 }
@@ -161,11 +156,24 @@ cout<<"Orden Agregada Exitosamente!!"<<endl;
 }
 
 
-void Home_delivery(int size){
-
+void Home_delivery(){
+/*
+    for(int i=0;i<size;i++){
+        cout<<"1"<<endl;
+        
+	cout<<"Nombre: "<<Orders[i].name;
+    cout<<"Direcion: "<<Orders[i].address;
+    cout<<"Numero de Telefono: "<<Orders[i].Telephone;
+    cout<<"Plato principal: "<<Orders[i].Main_Plate;
+    cout<<"Entrada Solicitada: "<<Orders[i].input;
+    cout<<"Bebida: "<<Orders[i].Drink;
+    cout<<"Monto a pagar: "<<Orders[i].Quantity;
+    cout<<"Digite el tipo de pago"<<endl;
+    cout<<"Tipo de pago: "<<Orders[i].Payment; 
+    } */
 }
 
-void Restaurant_Order(int size){
+void Restaurant_Order(){
 
 }
 
