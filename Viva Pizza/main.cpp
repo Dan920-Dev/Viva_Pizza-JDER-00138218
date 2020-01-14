@@ -21,7 +21,7 @@ int main(){
     {
       cout<<"Ingrese la clave de acceso: "<<endl;  
       cin>>password;
-        if(password!="nullptr"){
+        if(password!="nullptr" && password!="NULLPTR"){
             cout<<"La clave ingresada es invalida"<<endl;
         }else{
             continue1=true;
