@@ -1,6 +1,6 @@
 // Proyecto de Laboratorio, *** Sistema de Ventas ***
 
-#include <string.h>
+#include <string.h> // Para poder hacer uso de cadenas de caracteres
 #include <iostream>
 using namespace std;
 
@@ -17,6 +17,7 @@ int main(){
     string password;
     bool continue1=true;
     
+    // Con un do while evaluamos la clave ingresada, al estar correcta desplega el menu de opciones
     do
     {
       cout<<"Ingrese la clave de acceso: "<<endl;  
@@ -34,9 +35,10 @@ int main(){
 
 void Menu(){
     bool continue2=true;
+
 	do {
 		int opcion = 0;
-        cout<<"   ***Viva Pizza***  "<<endl;
+        cout<<"  ***Menu Viva Pizza***  "<<endl;
 		cout << "Opciones disponibles: "<<endl;
         
 		cout<<"1) Agregar pedido a Domicilio"<<endl;
@@ -69,9 +71,31 @@ void Menu(){
 }
 
 void Add_Order(){
+
+    struct Order{
+   	char name[20];
+    char address[20];
+    int Telephone;
+    char Main_Plate[20];
+    char input[20];
+    char Drink[20];
+    int  Quantity;
+    char Payment[20];
+};
+
 }
 
 void Add_Charge(){
+
+    struct Charge{
+   	char name[20];
+    char Main_Plate[20];
+    char input[20];
+    char Drink[20];
+    int  Quantity;
+    char Payment[20];
+};
+
 }
 
 void Home_delivery(){
