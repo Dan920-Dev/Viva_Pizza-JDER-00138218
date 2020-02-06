@@ -1,7 +1,9 @@
-// Proyecto de Laboratorio, *** Sistema de Ventas ***
+// Proyecto PED0319 *** Sistema de Ventas ***
 
 #include <string> // Para poder hacer uso de cadenas de caracteres
-#include <iostream>
+#include <iostream> // Para entrada y salida de datos
+#include <queue> // Libreria para colas
+#include <vector> 
 using namespace std;
 
 // Estructuras a Utilizar
@@ -20,8 +22,6 @@ using namespace std;
     string Payment;
 };
 
-
-
     struct Charge{ // Para enargos en el restaurante
    	string name;
     string Main_Plate;
@@ -33,7 +33,7 @@ using namespace std;
 
 // Funciones a Utilizar
 int login();
-void menuAdmin();
+void menu();
 void menuEmploy();
 void Add_Order(Order* Orders, int size);
 void Add_Charge(Charge* Charges, int size);
