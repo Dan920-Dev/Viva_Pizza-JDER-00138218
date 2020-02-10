@@ -470,26 +470,30 @@
     <p>
         <em>¿Qué aprendí con la realización de este proyecto?</em>
         <br>
-        <small>XXXXXXXXXXX</small>
+        <small>El manejo de estructuras Dinamicas usando librerias</small>
+        <small>Sobrecarga de Funciones</small>
+        <small>Uso de for each</small>
     </p>
     <p>
         <em>¿Qué fue lo más difícil de implementar?</em>
         <br>
-        <small>XXXXXXXXXXX</small>
+        <small>Las enumeraciones, porque no las comprendia bien</small>
     </p>
     <p>
         <em>¿Qué fue lo más fácil de implementar?</em>
         <br>
-        <small>XXXXXXXXXXX</small>
+        <small>Sobrecarga de funciones</small>
+        <small>Uso de libreria Vector</small>
     </p>
     <p>
         <em>¿Qué cambiaría en el desempeño del catedrático?</em>
         <br>
-        <small>XXXXXXXXXXX</small>
+        <small>Todo esta bien</small>
     </p>
     <p>
         <em>¿Qué cambiaría en el desempeño del instructor?</em>
         <br>
-        <small>XXXXXXXXXXX</small>
+        <small>Que sea mas paciente en los laboratorios ya que aveces avanzaba muy rapido y me perdia a la hora de copiar el codigo y prestar atencion a la explicacion</small>
+        <small>Por lo demas, todo esta bien</small>
     </p>
 </dl>

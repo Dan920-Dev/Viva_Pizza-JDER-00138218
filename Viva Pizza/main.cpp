@@ -8,6 +8,7 @@ using namespace std;
 
 #define PASSWORD "nullptr"
 
+// Enumeraciones  de Plato Principal/ Entradas/ Bebidas/ Tipo de pago
 enum mainDish{pizza, pasta, lasagna};
 enum drink{beer, soda, tea};
 enum starter{garlicBread, pizzaRolls, cheeseSticks};
@@ -18,6 +19,8 @@ struct Address{
     string Col, munici, state;
     int nHouse, telephone;
 };
+
+// campos de una Orden
 struct Order{ 
    	string name;
     vector<mainDish> MainDish;
@@ -41,7 +44,7 @@ struct House{ // para pedidos en restaurante
 };
 typedef House Restaurant;
 
-// Vectores, cola y pila a Utilizar
+// Vectores a Utilizar
 vector<Delivery> DeliveryOrder, ListDelivery;
 vector<House> HouseOrder, ListHouse;
 
@@ -89,16 +92,18 @@ int main(){
         {
         case 1:
             Delivery_Order();
+            cout << endl << endl;
             break;
         case 2:
             House_Order();
+            cout << endl << endl;
             break;
         case 3:
             if(DeliveryOrder.empty()){
                 cout << "No hay ordenes para mostrar" << endl << endl;
             }else{
             print(DeliveryOrder);
-            cout << endl;
+            cout << endl << endl;
             }
             break;
         case 4:
@@ -106,60 +111,64 @@ int main(){
                 cout << "No hay ordenes para mostrar" << endl << endl;
             }else{
             print(HouseOrder);
-            cout << endl;
+            cout << endl << endl;
             }
             break;
         case 5:
             dispatch(DeliveryOrder);
+            cout << endl << endl;
             break;
         case 6:
             dispatch(HouseOrder);
+            cout << endl << endl;
             break;
         case 7:
             if (DeliveryOrder.empty()){
-                cout << "No hay Ordenes agregadas aun, por lo cual no se puede mostrar el promedio de tiempo de espera" << endl;
+                cout << "No hay Ordenes agregadas aun, por lo cual no se puede mostrar el promedio de tiempo de espera" << endl << endl;
             }else{
                 promDelivery = averageTimeDelivery(0) / DeliveryOrder.size();
-                cout << "El tiempo promedio de espera es: " << promDelivery << "minutos" << endl;
+                cout << "El tiempo promedio de espera es: " << promDelivery << "minutos" << endl << endl;
             }
             break;
         case 8:
             if (HouseOrder.empty()){
-                cout << "No hay Ordenes agregadas aun, por lo cual no se puede mostrar el promedio de tiempo de espera" << endl;
+                cout << "No hay Ordenes agregadas aun, por lo cual no se puede mostrar el promedio de tiempo de espera" << endl << endl;
             }else{
                 promHouse = averageTimeHouse(0) / HouseOrder.size();
-                cout << "El tiempo promedio de espera es: " << promHouse << "minutos" << endl;    
+                cout << "El tiempo promedio de espera es: " << promHouse << "minutos" << endl << endl;    
             }
             break;
         case 9:
             if(admin == false){
-                cout << "Solo el Administrador tiene acceso a esta opcion del menu" << endl;
+                cout << "Solo el Administrador tiene acceso a esta opcion del menu" << endl << endl;
             }
 
             if(admin == true){
                 cout << "digite el ID de la orden a eliminar: "; cin >> id;
                 if(VerifyId(DeliveryOrder,id) == true or VerifyId(HouseOrder,id) == true){
                     cancelOrder(id);
-                    cout << "La orden " << id << " a sido cancelada existosamente" << endl;
+                    cout << "La orden " << id << " a sido cancelada existosamente" << endl << endl;
                 }else{
-                    cout << "No existe orden con ID: " << id << endl;
+                    cout << "No existe orden con ID: " << id << endl << endl;
                 }
             }
             break;
         case 10:
             totalSa = totalSales(ListDelivery, 0) + totalSales(ListHouse, 0);
             cout << "El total de ventas es: $" << totalSa;
+            cout << endl << endl;
             break;
         case 11:
             if(login() == false){
                 return 0;
             }
+            cout << endl << endl;
             break;
         case 12:
             continue1 = false;
             break;  
         default:
-            cout << "Opcion Invalida" << endl;
+            cout << "Opcion Invalida" << endl << endl;
             break;
         }
     } while (continue1);
@@ -173,15 +182,17 @@ bool login(){
     bool continue1 =  true;
     do
     {
+        // Se pregunta que usuario es
         cout << " Bienvenido, digame que usuario es: " << endl ;
         cout << "1. Administrador " << endl << "2. Empleado" << endl << "3. Salir del sistema" << endl << "Digite su opcion: ";
         cin >> option;
-
+        
         switch (option)
         {
         case 1:
             do
             {
+                // Si es Administrador se pide la contraseña para acceder al sistema
                 cout << "Digite la contraseña para poder ingresar al menu" << endl;
                 cin >> password;
                 if(password.compare(PASSWORD) == 0){
@@ -193,7 +204,7 @@ bool login(){
             }
             } while (continue1);
             break;
-        case 2:
+        case 2: // si es empleado no pide acceso 
             admin = false;
             return true;
             break;
@@ -236,6 +247,7 @@ void Delivery_Order(){
     bool continue1 = true, continue2 = true, continue3 = true, continue4 = true; // variables para validar menu
     float sumStarter = 0, sumMainDish = 0, sumDrink = 0; // variables para sumar el total de entradas, platos fuertes y bebidas
 
+    // Se piden los datos de la orden
     Delivery orderInfo;
     orderInfo.info.id = ID_ORDER++;
     cout << endl;
@@ -401,7 +413,7 @@ void Delivery_Order(){
 
     // Tiempo de espera 
     orderInfo.info.wait = ((sumStarter*1.10 + sumMainDish*1.5 +  sumDrink*1.35) + 15);
-    cout << "El tiempo de espera es de: " << orderInfo.info.wait << "mn" << endl;
+    cout << "El tiempo de espera es de: " << orderInfo.info.wait << "minutos" << endl;
 
     // monto de la orden
     // calculos para el monto...
@@ -409,7 +421,7 @@ void Delivery_Order(){
     float totalmainDish = pizza*pricePizza + pasta*pricePasta + lasagna*priceLasagna;
     float totalDrink = soda*priceSoda + beer*priceBeer + te*priceIcedTea;
     orderInfo.info.total = (totalStarter + totalmainDish + totalDrink);
-    cout << "El monto total es de: " << orderInfo.info.total;
+    cout << "El subtotal es: $" << orderInfo.info.total;
 
     DeliveryOrder.push_back(orderInfo);
 cout << "Pedido Agregado Exitosamente!!" << endl;
@@ -421,6 +433,7 @@ void House_Order(){
     bool continue1 = true, continue2 = true, continue3 = true, continue4 = true; // variables para validar menu
     float sumStarter = 0, sumMainDish = 0, sumDrink = 0; // variables para sumar el total de entradas, platos fuertes y bebidas
 
+    // Se piden los datos de la orden
     Restaurant orderInfo;
     orderInfo.info.id = ID_ORDER++;
     cout << "ID: " << orderInfo.info.id << endl;
@@ -585,13 +598,16 @@ void House_Order(){
     float totalmainDish = pizza*pricePizza + pasta*pricePasta + lasagna*priceLasagna;
     float totalDrink = soda*priceSoda + beer*priceBeer + te*priceIcedTea;
     orderInfo.info.total = (totalStarter + totalmainDish + totalDrink);
-    cout << "El monto total es de: " << orderInfo.info.total << endl;
+    cout << "El subtotal es: $" << orderInfo.info.total << endl;
 
     HouseOrder.push_back(orderInfo);
 cout << "Orden Agregada Exitosamente!!" << endl;
 }
 
+// Muestra las ordenes a Domicilio
 void print(vector<Delivery> DeliveryOrder){
+
+    // Se muestran los datos de la orden
     for(int i = 0; i < DeliveryOrder.size(); i++){
      cout << "----------------------------------------------------------------------------" << endl;
         cout << "ID de orden: " << DeliveryOrder[i].info.id << endl;
@@ -603,6 +619,7 @@ void print(vector<Delivery> DeliveryOrder){
         cout << ", Municipio " << DeliveryOrder[i].address.munici;
         cout << ", Departamento " << DeliveryOrder[i].address.state << endl;
         
+        // Se muestran entradas
         cout << "Entradas: " << endl;
        
         for(int s = 0; s < DeliveryOrder[i].info.Starter.size(); s++){
@@ -622,6 +639,7 @@ void print(vector<Delivery> DeliveryOrder){
 
         }
         
+        // Se muestran Plato principal
         cout << "Plato Principal: " << endl;
         for(int m = 0; m < DeliveryOrder[i].info.MainDish.size(); m++){
            switch (DeliveryOrder[i].info.Starter[m])
@@ -637,6 +655,8 @@ void print(vector<Delivery> DeliveryOrder){
                 break;
             }
         }
+
+        // Se muestran Bebidas
         cout << "Bebidas: " << endl;
         for(int d = 0; d < DeliveryOrder[i].info.PDrink.size(); d++){
             switch (DeliveryOrder[i].info.Starter[d])
@@ -653,6 +673,7 @@ void print(vector<Delivery> DeliveryOrder){
             }
         }
 
+        // Se muestra los demas datos de la orden
         if(DeliveryOrder[i].info.payM = cash){
         cout << "Tipo de pago: Efectivo"<< endl;
         }
@@ -666,7 +687,9 @@ void print(vector<Delivery> DeliveryOrder){
 
 }
 
+// Muestra las ordenes en el Restaurante
 void print(vector<House> HouseOrder){
+
  for(int i = 0; i < HouseOrder.size(); i++){
     cout << "----------------------------------------------------------------------------" << endl;
         cout << "ID de orden: " << HouseOrder[i].info.id << endl;
@@ -735,10 +758,14 @@ void print(vector<House> HouseOrder){
     } 
 }
 
+// Despacha Las ordenes a Domicilio
 void dispatch(vector<Delivery> DeliveryOrder){
+    // Primero se verifica si la lista esta vacia
     if(DeliveryOrder.empty()){
         cout << "No hay ordenes para despachar" << endl;
     }else{
+    
+    // Se despacha la primera orden y se envia  a una lista auxiliar 
     Delivery orderDispatch = DeliveryOrder.back();
     ListDelivery.push_back(orderDispatch);
     cout << "-----------------------------------" << endl;
@@ -753,6 +780,7 @@ void dispatch(vector<Delivery> DeliveryOrder){
 
 }
 
+// Despacha Las ordenes en el Restaurante
 void dispatch(vector<House> HouseOrder){
     if(HouseOrder.empty()){
         cout << "No hay ordenes para despachar" << endl;
@@ -770,7 +798,9 @@ void dispatch(vector<House> HouseOrder){
     }
 }
 
+// Calcula la suma de todos los tiempos a Domicilio con recursividad
 int averageTimeDelivery(int aux){
+
     if(aux == DeliveryOrder.size()){
         return 0;
     }else{
@@ -778,6 +808,7 @@ int averageTimeDelivery(int aux){
     }
 }
 
+// Calcula la suma de todos los tiempos en Restaurante con recursividad
 int averageTimeHouse(int aux){
     if(aux == HouseOrder.size()){
         return 0;
@@ -786,10 +817,10 @@ int averageTimeHouse(int aux){
     }
 }
 
-
-
+// Cancela la Orden y la elimina de la Lista
 void cancelOrder(int Id){ 
    
+   // Recorre la lista desde el inicio hasta el final y si se encuentra el id elimina esa orden
     for(auto iter = DeliveryOrder.begin(); iter != DeliveryOrder.end(); iter++){
         if(iter->info.id == Id){ 
         iter = DeliveryOrder.erase(iter);
@@ -806,7 +837,9 @@ void cancelOrder(int Id){
     }
 }
 
+// Verifica si la orden a eliminar esta en lista a Domicilio
 bool VerifyId(vector<Delivery> DeliveryOrder,int Id){
+    // verifica que el elemento, en este caso el id se encuentre en la lista 
         for(Delivery element : DeliveryOrder){
         if(element.info.id == Id){
             return true;
@@ -816,6 +849,7 @@ bool VerifyId(vector<Delivery> DeliveryOrder,int Id){
     }
 }
 
+// Verifica si la orden a eliminar esta en lista en Restaurante
 bool VerifyId(vector<House> HouseOrder, int Id){
     for(Restaurant element : HouseOrder){
         if(element.info.id == Id){
@@ -826,9 +860,9 @@ bool VerifyId(vector<House> HouseOrder, int Id){
     }
 }
 
-
-
+// Calcula el total de ventas a Domicilio
 float totalSales(vector<Delivery> ListDelivery, int pos){
+    // Con recursividad se verifica cada orden y se extrae el total y se va sumando
     if(pos == ListDelivery.size()){
         return 0;
     }else{
@@ -836,6 +870,7 @@ float totalSales(vector<Delivery> ListDelivery, int pos){
     }
 }
 
+// Calcula el total de ventas en el Restaurante
 float totalSales(vector<House> ListHouse, int pos){
     if(pos == ListHouse.size()){
         return 0;
