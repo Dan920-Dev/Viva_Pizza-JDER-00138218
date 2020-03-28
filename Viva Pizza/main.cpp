@@ -421,7 +421,7 @@ void Delivery_Order(){
     float totalmainDish = pizza*pricePizza + pasta*pricePasta + lasagna*priceLasagna;
     float totalDrink = soda*priceSoda + beer*priceBeer + te*priceIcedTea;
     orderInfo.info.total = (totalStarter + totalmainDish + totalDrink);
-    cout << "El subtotal es: $" << orderInfo.info.total;
+    cout << "El subtotal es: $" << orderInfo.info.total << endl;
 
     DeliveryOrder.push_back(orderInfo);
 cout << "Pedido Agregado Exitosamente!!" << endl;
